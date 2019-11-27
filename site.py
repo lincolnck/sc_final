@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import send_from_directory
-from wrapper import wrapper
+from python.averager import averager
 import os
 
 app = Flask(__name__)
@@ -10,7 +10,7 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 @app.route('/')
 def home():
-	return render_template('main.html')
+	return render_template("../templates/main.html")
 
 @app.route('/averager')
 def averager():
@@ -18,7 +18,7 @@ def averager():
 
 @app.route('/upload', methods=["POST"])
 def upload():
-	target = os.path.join(APP_ROOT, 'faces/')
+	target = os.path.join(APP_ROOT, '../faces/')
 	if not os.path.isdir(target):
 			os.mkdir(target)
 	else:
@@ -31,9 +31,9 @@ def upload():
 
 @app.route('/execute', methods=["POST", "GET"])
 def execute():
-	file_path = 'faces/'
-	average_face = wrapper(file_path)
-	return render_template("success.html", image_name=average_face)
+	file_path = '../faces/'
+	average_face = averager(file_path)
+	return render_template("success.html")
 	
 @app.route('/about')
 def about():

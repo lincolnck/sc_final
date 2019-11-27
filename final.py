@@ -222,8 +222,6 @@ def warpImages():
 
 if __name__ == '__main__':
 	image_path = get_images()
-
-	# convert_images('faces/IMG_1718.JPG', 'faces/IMG_1719.JPG')
 	# Read points for all images
 	images = process_images(image_path)
 	print('Processing images. Please wait.')
