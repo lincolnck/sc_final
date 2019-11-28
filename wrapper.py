@@ -2,6 +2,7 @@ from final import process_images, find_landmarks, scale_images, scale_landmarks,
 import numpy as np
 import cv2
 from PIL import Image
+import os
 
 def wrapper(file_path):
 	images = process_images(file_path)
@@ -47,8 +48,19 @@ def wrapper(file_path):
 	output = output / len(images);
 	output = output * 255
 	output = output.astype('uint8')
-	cv2.imwrite('../images/average_face.png', output);
+	cv2.imwrite('images/average_face.png', output);
+	# os.chdir('/faces')
+	for file in os.listdir('faces'):
+		if file.endswith('.png'):
+			os.remove(file)
+		elif file.endswith('.tiff'):
+			os.remove(file)
+		elif file.endswith('.jpeg'):
+			os.remove(file)
+		elif file.endswith('.jpg'):
+			os.remove(file)
+		else:
+			continue
 	
-
 if __name__ == '__main__':
-	wrapper('../faces')
+	wrapper('faces')
