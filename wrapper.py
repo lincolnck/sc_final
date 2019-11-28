@@ -49,9 +49,10 @@ def wrapper(file_path):
 	output = output * 255
 	output = output.astype('uint8')
 	cv2.imwrite('images/average_face.png', output);
-	# os.chdir('/faces')
-	for file in os.listdir('faces'):
-		if file.endswith('.png'):
+	os.chdir('./faces')
+	for file in os.listdir('.'):
+		print(file)
+		if file.endswith('.jpg'):
 			os.remove(file)
 		elif file.endswith('.tiff'):
 			os.remove(file)
@@ -63,4 +64,4 @@ def wrapper(file_path):
 			continue
 	
 if __name__ == '__main__':
-	wrapper('faces')
+	wrapper('./faces')
