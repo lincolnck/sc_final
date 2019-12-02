@@ -48,7 +48,7 @@ def wrapper(file_path):
 	output = output / len(images);
 	output = output * 255
 	output = output.astype('uint8')
-	cv2.imwrite('static/images/average_face.png', output);
+	cv2.imwrite('static/outputimage/average_face.png', output);
 	os.chdir('./static/faces')
 	for file in os.listdir('.'):
 		print(file)

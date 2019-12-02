@@ -41,14 +41,13 @@ def send_image(filename):
 def execute():
     file_path = 'static/faces/'
     average_face = wrapper(file_path)
-    # output_impath = os.path.join(APP_ROOT, 'images/average_face.png')
     output_impath = 'average_face.png'
     print(APP_ROOT)
     return render_template("success.html", output_image = output_impath)
 
 @app.route('/execute/<output_impath>')
 def output_image(output_impath):
-    return send_from_directory("static/images", output_impath)
+    return send_from_directory("static/outputimage", output_impath)
     
 @app.route('/about')
 def about():

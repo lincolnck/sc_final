@@ -1,28 +1,29 @@
 body {
   margin: 0;
-  padding: 0;
+  margin-bottom: 10px;
+  padding: 20;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #444;
+  color: #3b3a30;
 }
 /*
  * Formatting the header area
  */
 header {
-  background-color: #DFB887;
-  height: 35px;
+  background-color: #b2c2bf;
+  height: 55px;
   width: 100%;
   opacity: .9;
   margin-bottom: 10px;
 }
 header h1.logo {
   margin: 0;
-  font-size: 1.7em;
+  font-size: 3em;
   color: #fff;
   text-transform: uppercase;
   float: left;
 }
 header h1.logo:hover {
-  color: #fff;
+  color: #3b3a30;
   text-decoration: none;
 }
 /*
@@ -33,24 +34,31 @@ header h1.logo:hover {
   margin: 0 auto;
 }
 div.home {
-  padding: 10px 0 30px 0;
-  background-color: #E6E6FA;
+  padding: 10px 10px 20px 10px;
+  background-color: #c0ded9;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+div.main {
+  padding: 10px 20px 20px 20px;
+  background-color: #eaece5;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
 }
 div.about {
-  padding: 10px 0 30px 0;
-  background-color: #E6E6FA;
+  padding: 10px 20px 20px 20px;
+  background-color: #eaece5;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
 }
 h2 {
-  font-size: 3em;
+  font-size: 1.5em;
   margin-top: 40px;
-  text-align: center;
-  letter-spacing: -2px;
+  text-align: left;
+  letter-spacing: -1px;
 }
 h3 {
   font-size: 1.7em;
@@ -62,7 +70,7 @@ h3 {
 }
 .menu {
   float: right;
-  margin-top: 8px;
+  margin-top: 17px;
 }
 .menu li {
   display: inline;
