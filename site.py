@@ -11,7 +11,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 @app.route('/')
 def home():
-    return render_template("main.html")
+    return render_template("home.html")
 
 @app.route('/averager')
 def averager():
