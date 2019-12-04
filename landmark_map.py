@@ -1,8 +1,6 @@
-from PIL import Image
-import glob
+'''
+'''
 import os
-import numpy as np
-import math
 import cv2
 import dlib 
 
@@ -27,6 +25,8 @@ def find_landmarks(image_path, predictor_path):
 	return alllandmarks
 
 def plot_landmarks(image, landmarks):
+	'''
+	'''
 	image = cv2.imread(image)
 	for face in landmarks:
 		for point in face:

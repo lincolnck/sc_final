@@ -6,7 +6,7 @@ import os
 import numpy as np
 import math
 import cv2
-import dlib 
+import dlib
 
 def get_images():
 	image_path = input('Please input image folder name: ')
@@ -36,6 +36,7 @@ def find_landmarks(image_path):
 	for f in glob.glob(os.path.join(image_path, "*")):
 		img = dlib.load_rgb_image(f)
 		dets = detector(img, 1)
+		print(dets)
 		print("Number of faces detected: {}".format(len(dets)))
 
 		for k, d in enumerate(dets):
