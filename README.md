@@ -17,7 +17,7 @@ We will begin with ```local_imp```.
 
 ### ```local_imp```
 
-Within ```local_imp``` there is an ```imagesfp``` subdirectory. Located within are example images that can be used to run the program. Alternatively, you can replace them with your own images that you would like to average. However, it is not necessary, as running the program in your terminal will prompt you to enter a filepath containing images you'd like to average. 
+Within ```local_imp``` there is an ```imagesfp``` subdirectory. You can place the images here to average. However, it is not necessary, as running the program in your terminal will prompt you to enter a filepath containing images you'd like to average. 
 To execute the program, enter the following into the terminal:
 ```
 $ python3 averager.py
