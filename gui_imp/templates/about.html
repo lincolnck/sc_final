@@ -25,9 +25,23 @@
 		<img src="{{ url_for('static', filename='images/curies_face_landmarks.png')}}" alt="Curies Landmarks" style="width:22%;height:22%">
 		<p>However, if the person in the image is too far away, or if the image is very noisy, it sometimes fails to detect a face.</p>
 		<img src="{{ url_for('static', filename='images/curie_far.jpg')}}" alt="Curie Far" style="width:50%;height:50%">
-		<p>For the purposes of this application, there should only be one face in each image, and the face should be fairly unobstructed with a neutral expression. You'll see why this is important as we discuss landmark transformation.</p>
+		<p>For the purposes of this application, the face should be fairly unobstructed with a neutral expression. You'll see why this is important as we discuss landmark transformation.</p>
 		<h2>Landmark Transformation</h2>
 		<p>Once the landmarks have been mapped onto the images, the next step is to transform the landmarks so that the images can be averaged.</p>
+		<p>The app will calculate an average position of landmarks across all the images, and transform all of the images to a common space. This is helpful because some images are large, and some are small and realistic averaging of the faces requires all the faces to be of the same scale.</p>
+		<p>Following the scaling of the images, a Delaunay Triangulation is calculated for each set of landmark coordinates within each image. For more information on Delaunay Triangulation read the Wikipedia page below:</p>
+		<a href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Delaunay Triangulation Wikipedia Page</a>
+		<p></p>
+		<img src="{{ url_for('static', filename='images/curie_triangle.png')}}" alt="Curie Triangle" style="width:50%;height:50%">
+		<p>What that does, is allow a specific mapping from one image to the other. All the images will now be composed of a set of triangular regions, and now the app needs to transform all those triangles to the common space. In other words, there will be an equal amount of triangles in each image, and there is a one-to-one mapping of triangles between each image.</p>
+		<p>With this triangulation, the problem of finding an average face has been boiled down to finding an optimum transformation between one triangle to another triangle.</p>
+		<p>Luckily, OpenCV has functions that allow us to determine that transformation. In this case the transformation will be a specific type of transformation called an affine transformation, which accounts for scale, rotation and translation. To read more about affine transformations read either the Wikipedia page below, or the OpenCV documentation linked below:</p>
+		<a href="https://en.wikipedia.org/wiki/Affine_transformation">Affine Transformation Wikipedia Page</a>
+		<p></p>
+		<a href="https://docs.opencv.org/3.4/d4/d61/tutorial_warp_affine.html">OpenCV Affine Transformation Documentation</a>
+		<p></p>
+		<img src="{{ url_for('static', filename='images/affine_triangles.jpg')}}" alt="Affine Triangles" style="width:50%;height:50%">
+		<p>With the optimal affine transformation calculated using OpenCV, we apply that transformation to each individual triangle in each image in order to map it to the target space triangles. Then, we find average the intensities of each image, and overlay them. The end result is a fairly good representation of an average face!</p>
 	</div>
 {% endblock %}
 </body>

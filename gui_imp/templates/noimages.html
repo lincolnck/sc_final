@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Upload</title>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<title>Face Averager</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 <body>
 {% extends "layout.html" %}
 {% block content %}
-<div class="upload">
+	<div class="main">
+	<h1>You didn't upload any images!</h1>
     <h2>Upload your files below:</h2>
     <p>Note: only .jpg, .jpeg, .png, or .tiff files are allowed. The app will accept images with multiple faces in them, however make sure that the images you are uploading have faces that are clearly defined. If the app is unable to detect faces in the images you upload, it will not work.</p>
     <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">

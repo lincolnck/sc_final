@@ -48,8 +48,9 @@ def main(image_path):
     print('Averaging faces...')
     output = image_transform(scaled_images, pointsNorm, pointsAvg, dt)
     print('Success!')
-    cv2.imshow('image', output)
-    cv2.waitKey(0)
+    print(output)
+    # cv2.imshow('image', output)
+    # cv2.waitKey(0)
 
 if __name__ == '__main__':
     image_path = input("Please enter the name of a folder containing images: ")

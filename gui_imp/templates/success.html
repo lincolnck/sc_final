@@ -7,7 +7,9 @@
 <body>
 {% extends "layout.html" %}
 {% block content %}
-SUCCESS!
-<img src="{{ url_for('output_image', output_impath=output_image) }}" alt="Average Face" title="The average face" width="auto" height="auto">
+<div class="success">
+<h1>SUCCESS!</h1>
+<img src="{{ url_for('output_image', output_impath=output_image) }}" alt="Average Face" title="The average face" style="width:45%;height:45%">
+</div>
 {% endblock %}
 </body>

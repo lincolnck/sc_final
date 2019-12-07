@@ -49,10 +49,10 @@ def process_images(imagesfp):
         images.append(image)
     if not images:
         print("No image files found!")
-        sys.exit()
+        raise Exception
     if len(images) == 1:
         print("Only one image found. At least two are required!")
-        sys.exit()
+        raise Exception
     return images
 
 
@@ -98,7 +98,7 @@ def face_check(imagesfp):
         detections.append(len(faces))
     if all(d == 0 for d in detections):
         print("Dlib was unable to detect a face in any of the images!")
-        sys.exit()
+        raise Exception
 
 if __name__ == '__main__':
     pass
