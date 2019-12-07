@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ABOUT</title>
+</head>
+<body>
+{% extends "layout.html" %}
+{% block content %}
+	<div class="about">
+		<h1>About</h1>
+		<h2>Introduction</h2>
+		<p>This website was built with Flask, a web framework written in Python. The program that actually averages the faces you upload was built in Python as well. But how does it actually do it?</p>
+		<p>To begin with, you can upload any number of images that have clearly defined faces in them, such as:</p>
+		<img src="{{ url_for('static', filename='images/girl.jpeg')}}" alt="Curie" style="width:45%;height:45%">
+		<img src="{{ url_for('static', filename='images/boy.jpeg')}}" alt="Einstein" style="width:45%;height:45%">
+		<p>And it will output an average of the two faces, such as:</p>
+		<img src="{{ url_for('static', filename='images/average_face.png')}}" alt="Cureinstein" style="width:50%;height:50%">
+		<p>The way this happens can be broken down into two separate phases: landmark mapping, and landmark transformation.</p>
+		<h2>Landmark Mapping</h2>
+		<p>The first phase of the face averaging algorithm is where specific features are mapped within the image. This is accomplished using the Python API of the Dlib software library written in C++. Essentially, what this software library does is allow a user to map 68 different facial landmarks onto an image. For example, given the above image of Marie Curie, the landmarks are:</p>
+		<img src="{{ url_for('static', filename='images/face_landmarks.png')}}" alt="Curie Landmarks" style="width:50%;height:50%">
+		<p>Dlib uses a pre-trained model in order to first, detect whether or not there are any faces within the image, and second, if there is a face within the image, to find the facial landmarks. The Dlib model is fairly robust, and does well even when the face is partially obstructed, viewed from profile, or when there are multiple faces within the image.</p>
+		<img src="{{ url_for('static', filename='images/einstein_tongue_face_landmarks.png')}}" alt="Einstein Tongue Landmarks" style="width:22%;height:22%">
+		<img src="{{ url_for('static', filename='images/curie_profile_face_landmarks.png')}}" alt="Curie Landmarks" style="width:22%;height:22%">
+		<img src="{{ url_for('static', filename='images/curies_face_landmarks.png')}}" alt="Curies Landmarks" style="width:22%;height:22%">
+		<p>However, if the person in the image is too far away, or if the image is very noisy, it sometimes fails to detect a face.</p>
+		<img src="{{ url_for('static', filename='images/curie_far.jpg')}}" alt="Curie Far" style="width:50%;height:50%">
+		<p>For the purposes of this application, there should only be one face in each image, and the face should be fairly unobstructed with a neutral expression. You'll see why this is important as we discuss landmark transformation.</p>
+		<h2>Landmark Transformation</h2>
+		<p>Once the landmarks have been mapped onto the images, the next step is to transform the landmarks so that the images can be averaged.</p>
+	</div>
+{% endblock %}
+</body>
+</html>

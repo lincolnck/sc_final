@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends "layout.html" %}
+{% block content %}
+Images successfully uploaded! 
+<img src="{{ url_for('send_image', filename=image_name)}}">
+Click the link below to average:
+		<form action="/execute">
+            <input type="submit" value="AVERAGE IMAGES!" />
+        </form>
+{% endblock %}
+</body>
