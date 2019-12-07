@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import send_from_directory
-from wrapper import wrapper
+from averager import main
 import os
 
 app = Flask(__name__)
@@ -40,7 +40,7 @@ def send_image(filename):
 @app.route('/execute', methods=["POST", "GET"])
 def execute():
     file_path = 'static/faces/'
-    average_face = wrapper(file_path)
+    average_face = main(file_path)
     output_impath = 'average_face.png'
     print(APP_ROOT)
     return render_template("success.html", output_image = output_impath)
