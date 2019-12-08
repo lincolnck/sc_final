@@ -92,8 +92,8 @@ def face_check(imagesfp):
             print("Dlib detected two or more faces in '{}'.".format(filename))
             print("Copying image around each cropped face...")
             for k, d in enumerate(faces):
-                img_new = image[max(0, d.top()-150):min(d.bottom()+100, imheight), max(0, d.left()-100):min(d.right()+100, imwidth)]
-                cv2.imwrite(os.path.join(imagesfp, 'newface_{}.png'.format(k)), img_new)
+                img_new = image[max(0, d.top()):min(d.bottom(), imheight), max(0, d.left()):min(d.right(), imwidth)]
+                dlib.save_image(img_new, os.path.join(imagesfp, 'newerface_{}.png'.format(k)))
             os.remove(file)
         detections.append(len(faces))
     if all(d == 0 for d in detections):
